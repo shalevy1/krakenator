@@ -1,0 +1,6 @@
+[submodule "client/lib/d3"]
+	path = client/lib/d3
+	url = git@github.com:kkroening/mdm-releases-d3.git
+	mdm = dependency
+	mdm-version = v3.1.10
+	update = none
