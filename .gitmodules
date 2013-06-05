@@ -4,3 +4,9 @@
 	mdm = dependency
 	mdm-version = v3.1.10
 	update = none
+[submodule "client/lib/jquery"]
+	path = client/lib/jquery
+	url = git@github.com:kkroening/mdm-releases-jquery.git
+	mdm = dependency
+	mdm-version = 1.10.0
+	update = none
