@@ -8,5 +8,5 @@
 	path = client/lib/jquery
 	url = git@github.com:kkroening/mdm-releases-jquery.git
 	mdm = dependency
-	mdm-version = 1.10.0
+	mdm-version = 1.9.1
 	update = none
