@@ -9,28 +9,31 @@ function TopLevelView(container) {
     this.div.css("width", "100%");
     this.div.css("height", "100%");
 
-    this.divTop    = mkdiv("top", "view", this.div);
-    this.divRight  = mkdiv("right", "view", this.div);
-    this.divBottom = mkdiv("bottom", "view", this.div);
-    this.divLeft   = mkdiv("left", "view", this.div);
-    this.divCenter = mkdiv("center", "view", this.div);
+    this.subViews = [];
+    this.subDivs  = [];
+
+    this.subDivs[this.ViewID.TOP]    = mkdiv("top", "view", this.div);
+    this.subDivs[this.ViewID.RIGHT]  = mkdiv("right", "view", this.div);
+    this.subDivs[this.ViewID.BOTTOM] = mkdiv("bottom", "view", this.div);
+    this.subDivs[this.ViewID.LEFT]   = mkdiv("left", "view", this.div);
+    this.subDivs[this.ViewID.CENTER] = mkdiv("center", "view", this.div);
 
     this.topHeight    = 100;
     this.bottomHeight = 200;
     this.leftWidth    = 200;
     this.rightWidth   = 200;
 
-    this.divTop.css("top", "0");
-    this.divTop.css("left", "0");
-    this.divTop.css("right", "0");
+    this.subDivs[this.ViewID.TOP].css("top", "0");
+    this.subDivs[this.ViewID.TOP].css("left", "0");
+    this.subDivs[this.ViewID.TOP].css("right", "0");
 
-    this.divLeft.css("left", "0");
-    this.divLeft.css("bottom", "0");
+    this.subDivs[this.ViewID.LEFT].css("left", "0");
+    this.subDivs[this.ViewID.LEFT].css("bottom", "0");
 
-    this.divRight.css("right", "0");
+    this.subDivs[this.ViewID.RIGHT].css("right", "0");
 
-    this.divBottom.css("right", "0");
-    this.divBottom.css("bottom", "0");
+    this.subDivs[this.ViewID.BOTTOM].css("right", "0");
+    this.subDivs[this.ViewID.BOTTOM].css("bottom", "0");
 
     this.doResize();
 
@@ -42,34 +45,80 @@ function TopLevelView(container) {
 TopLevelView.prototype = Object.create(View.prototype);
 TopLevelView.prototype.constructor = TopLevelView;
 
+TopLevelView.prototype.ViewID = {
+    LEFT:       0,
+    RIGHT:      1,
+    TOP:        2,
+    BOTTOM:     3,
+    CENTER:     4,
+    ENUM_COUNT: 5
+};
+
 TopLevelView.prototype.doResize = function() {
-    this.divTop.css("height", this.topHeight);
-    this.divLeft.css("top", this.topHeight);
-    this.divLeft.css("width", this.leftWidth);
-    this.divRight.css("top", this.topHeight);
-    this.divRight.css("width", this.rightWidth);
-    this.divRight.css("bottom", this.bottomHeight);
-    this.divBottom.css("height", this.bottomHeight);
-    this.divBottom.css("left", this.leftWidth);
-    this.divCenter.css("top", this.topHeight + 1);
-    this.divCenter.css("left", this.leftWidth + 1);
-    this.divCenter.css("right", this.rightWidth + 1);
-    this.divCenter.css("bottom", this.bottomHeight + 1);
+    this.subDivs[this.ViewID.TOP].css("height", this.topHeight);
+    this.subDivs[this.ViewID.LEFT].css("top", this.topHeight);
+    this.subDivs[this.ViewID.LEFT].css("width", this.leftWidth);
+    this.subDivs[this.ViewID.RIGHT].css("top", this.topHeight);
+    this.subDivs[this.ViewID.RIGHT].css("width", this.rightWidth);
+    this.subDivs[this.ViewID.RIGHT].css("bottom", this.bottomHeight);
+    this.subDivs[this.ViewID.BOTTOM].css("height", this.bottomHeight);
+    this.subDivs[this.ViewID.BOTTOM].css("left", this.leftWidth);
+    this.subDivs[this.ViewID.CENTER].css("top", this.topHeight + 1);
+    this.subDivs[this.ViewID.CENTER].css("left", this.leftWidth + 1);
+    this.subDivs[this.ViewID.CENTER].css("right", this.rightWidth + 1);
+    this.subDivs[this.ViewID.CENTER].css("bottom", this.bottomHeight + 1);
 }
 
-TopLevelView.prototype.setLeft = function(left) {
-    if (this.left != null) {
-        this.left.div.remove();
+TopLevelView.prototype.setSubView = function(id, subView) {
+    if (this.subViews[id] != null) {
+        this.subViews[id].div.remove();
     }
 
-    this.left = left;
+    this.subViews[id] = subView;
 
-    if (left != null) {
-        this.left.div.appendTo(this.divLeft);
-        this.leftWidth = this.left.width;
+    if (subView != null) {
+        subView.div.appendTo(this.subDivs[id]);
+        if (id == this.ViewID.LEFT) {
+            this.leftWidth = subView.width;
+        } else if (id == this.ViewID.RIGHT) {
+            this.rightWidth = subView.width;
+        } else if (id == this.ViewID.TOP) {
+            this.topHeight = subView.height;
+        } else if (id == this.ViewID.BOTTOM) {
+            this.bottomHeight = subView.height;
+        }
     } else {
-        this.leftWidth = 0;
+        if (id == this.ViewID.LEFT) {
+            this.leftWidth = 0;
+        } else if (id == this.ViewID.RIGHT) {
+            this.rightWidth = 0;
+        } else if (id == this.ViewID.TOP) {
+            this.topHeight = 0;
+        } else if (id == this.ViewID.BOTTOM) {
+            this.bottomHeight = 0;
+        }
     }
 
     this.doResize();
 }
+
+TopLevelView.prototype.setLeft = function(left) {
+    this.setSubView(this.ViewID.LEFT, left);
+}
+
+TopLevelView.prototype.setRight = function(right) {
+    this.setSubView(this.ViewID.RIGHT, right);
+}
+
+TopLevelView.prototype.setBottom = function(bottom) {
+    this.setSubView(this.ViewID.BOTTOM, bottom);
+}
+
+TopLevelView.prototype.setTop = function(top) {
+    this.setSubView(this.ViewID.TOP, top);
+}
+
+TopLevelView.prototype.setCenter = function(center) {
+    this.setSubView(this.ViewID.CENTER, center);
+}
+

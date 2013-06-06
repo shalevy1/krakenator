@@ -5,4 +5,4 @@ function TestView(width, height, name) {
 }
 
 TestView.prototype = Object.create(View.prototype);
-TestView.prototype.constructor = TopLevelView;
+TestView.prototype.constructor = TestView;
