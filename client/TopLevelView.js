@@ -14,28 +14,34 @@ function TopLevelView(container) {
     this.subViews = [];
     this.subDivs  = [];
 
-    this.subDivs[this.ViewID.TOP]    = mkdiv("top", "view", this.div);
-    this.subDivs[this.ViewID.RIGHT]  = mkdiv("right", "view", this.div);
-    this.subDivs[this.ViewID.BOTTOM] = mkdiv("bottom", "view", this.div);
-    this.subDivs[this.ViewID.LEFT]   = mkdiv("left", "view", this.div);
-    this.subDivs[this.ViewID.CENTER] = mkdiv("center", "view", this.div);
+    var top    = mkdiv("top", "view", this.div);
+    var right  = mkdiv("right", "view", this.div);
+    var bottom = mkdiv("bottom", "view", this.div);
+    var left   = mkdiv("left", "view", this.div);
+    var center = mkdiv("center", "view", this.div);
+
+    this.subDivs[this.ViewID.TOP]    = top;
+    this.subDivs[this.ViewID.RIGHT]  = right;
+    this.subDivs[this.ViewID.BOTTOM] = bottom;
+    this.subDivs[this.ViewID.LEFT]   = left;
+    this.subDivs[this.ViewID.CENTER] = center;
 
     this.topHeight    = 100;
     this.bottomHeight = 200;
     this.leftWidth    = 200;
     this.rightWidth   = 200;
 
-    this.subDivs[this.ViewID.TOP].css("top", "0");
-    this.subDivs[this.ViewID.TOP].css("left", "0");
-    this.subDivs[this.ViewID.TOP].css("right", "0");
+    top.css("top", "0");
+    top.css("left", "0");
+    top.css("right", "0");
 
-    this.subDivs[this.ViewID.LEFT].css("left", "0");
-    this.subDivs[this.ViewID.LEFT].css("bottom", "0");
+    left.css("left", "0");
+    left.css("bottom", "0");
 
-    this.subDivs[this.ViewID.RIGHT].css("right", "0");
+    right.css("right", "0");
 
-    this.subDivs[this.ViewID.BOTTOM].css("right", "0");
-    this.subDivs[this.ViewID.BOTTOM].css("bottom", "0");
+    bottom.css("right", "0");
+    bottom.css("bottom", "0");
 
     this.doResize();
 
