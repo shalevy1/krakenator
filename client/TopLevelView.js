@@ -31,15 +31,27 @@ function TopLevelView(container) {
     this.leftWidth    = 200;
     this.rightWidth   = 200;
 
+    top.css("border-style", "none none solid none");
+    top.css("border-color", "black");
+    top.css("border-width", "1px");
     top.css("top", "0");
     top.css("left", "0");
     top.css("right", "0");
 
+    left.css("border-style", "none solid none none");
+    left.css("border-color", "black");
+    left.css("border-width", "1px");
     left.css("left", "0");
     left.css("bottom", "0");
 
+    right.css("border-style", "none none none solid");
+    right.css("border-color", "black");
+    right.css("border-width", "1px");
     right.css("right", "0");
 
+    bottom.css("border-style", "solid none none none");
+    bottom.css("border-color", "black");
+    bottom.css("border-width", "1px");
     bottom.css("right", "0");
     bottom.css("bottom", "0");
 
@@ -66,13 +78,13 @@ TopLevelView.prototype.doResize = function() {
     this.width  = this.div.width();
     this.height = this.div.height();
 
-    this.subDivs[this.ViewID.TOP].css("height", this.topHeight);
+    this.subDivs[this.ViewID.TOP].css("height", this.topHeight - 1);
     this.subDivs[this.ViewID.LEFT].css("top", this.topHeight);
-    this.subDivs[this.ViewID.LEFT].css("width", this.leftWidth);
+    this.subDivs[this.ViewID.LEFT].css("width", this.leftWidth - 1);
     this.subDivs[this.ViewID.RIGHT].css("top", this.topHeight);
-    this.subDivs[this.ViewID.RIGHT].css("width", this.rightWidth);
+    this.subDivs[this.ViewID.RIGHT].css("width", this.rightWidth - 1);
     this.subDivs[this.ViewID.RIGHT].css("bottom", this.bottomHeight);
-    this.subDivs[this.ViewID.BOTTOM].css("height", this.bottomHeight);
+    this.subDivs[this.ViewID.BOTTOM].css("height", this.bottomHeight - 1);
     this.subDivs[this.ViewID.BOTTOM].css("left", this.leftWidth);
     this.subDivs[this.ViewID.CENTER].css("top", this.topHeight);
     this.subDivs[this.ViewID.CENTER].css("left", this.leftWidth);
