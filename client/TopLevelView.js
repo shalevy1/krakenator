@@ -74,10 +74,10 @@ TopLevelView.prototype.doResize = function() {
     this.subDivs[this.ViewID.RIGHT].css("bottom", this.bottomHeight);
     this.subDivs[this.ViewID.BOTTOM].css("height", this.bottomHeight);
     this.subDivs[this.ViewID.BOTTOM].css("left", this.leftWidth);
-    this.subDivs[this.ViewID.CENTER].css("top", this.topHeight + 1);
-    this.subDivs[this.ViewID.CENTER].css("left", this.leftWidth + 1);
-    this.subDivs[this.ViewID.CENTER].css("right", this.rightWidth + 1);
-    this.subDivs[this.ViewID.CENTER].css("bottom", this.bottomHeight + 1);
+    this.subDivs[this.ViewID.CENTER].css("top", this.topHeight);
+    this.subDivs[this.ViewID.CENTER].css("left", this.leftWidth);
+    this.subDivs[this.ViewID.CENTER].css("right", this.rightWidth);
+    this.subDivs[this.ViewID.CENTER].css("bottom", this.bottomHeight);
 
     if (this.subViews[this.ViewID.TOP] != null) {
         this.subViews[this.ViewID.TOP].setWidth(this.width);
