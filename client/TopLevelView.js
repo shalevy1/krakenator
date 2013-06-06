@@ -1,5 +1,7 @@
 var mkdiv = function(id, cls, owner) {
-    return $('<div id="' + id + '" class="' + cls + '"></div>').appendTo(owner);
+    var result = $('<div id="' + id + '" class="' + cls + '"></div>').appendTo(owner);
+    result.css("background-color", Color.DARK);
+    return result;
 }
 
 function TopLevelView(container) {
