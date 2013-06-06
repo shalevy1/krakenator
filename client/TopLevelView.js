@@ -5,6 +5,8 @@ var mkdiv = function(id, cls, owner) {
 function TopLevelView(container) {
     View.call(this, 0, 0);
 
+    //this.div.resize(this.doResize);
+
     this.div.css("position", "relative");
     this.div.css("width", "100%");
     this.div.css("height", "100%");
@@ -55,6 +57,9 @@ TopLevelView.prototype.ViewID = {
 };
 
 TopLevelView.prototype.doResize = function() {
+    this.width  = this.div.width();
+    this.height = this.div.height();
+
     this.subDivs[this.ViewID.TOP].css("height", this.topHeight);
     this.subDivs[this.ViewID.LEFT].css("top", this.topHeight);
     this.subDivs[this.ViewID.LEFT].css("width", this.leftWidth);
@@ -67,6 +72,23 @@ TopLevelView.prototype.doResize = function() {
     this.subDivs[this.ViewID.CENTER].css("left", this.leftWidth + 1);
     this.subDivs[this.ViewID.CENTER].css("right", this.rightWidth + 1);
     this.subDivs[this.ViewID.CENTER].css("bottom", this.bottomHeight + 1);
+
+    if (this.subViews[this.ViewID.TOP] != null) {
+        this.subViews[this.ViewID.TOP].setWidth(this.width);
+    }
+    if (this.subViews[this.ViewID.LEFT] != null) {
+        this.subViews[this.ViewID.LEFT].setHeight(this.height - this.topHeight);
+    }
+    if (this.subViews[this.ViewID.RIGHT] != null) {
+        this.subViews[this.ViewID.RIGHT].setHeight(this.height - this.topHeight - this.bottomHeight);
+    }
+    if (this.subViews[this.ViewID.BOTTOM] != null) {
+        this.subViews[this.ViewID.BOTTOM].setWidth(this.width - this.leftWidth);
+    }
+    if (this.subViews[this.ViewID.CENTER] != null) {
+        this.subViews[this.ViewID.CENTER].setWidth(this.width - this.leftWidth - this.rightWidth);
+        this.subViews[this.ViewID.CENTER].setHeight(this.height - this.topHeight - this.bottomHeight);
+    }
 }
 
 TopLevelView.prototype.setSubView = function(id, subView) {
