@@ -23,3 +23,7 @@ div.view {
     border-radius: 1px;
     */
 }
+
+.component-view {
+    background-color: gray;
+}
