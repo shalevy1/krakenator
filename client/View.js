@@ -7,10 +7,7 @@ function View(width, height) {
     this.div.css("height", "100%");
 }
 
-View.prototype.setWidth = function(width) {
+View.prototype.setSize = function(width, height) {
     this.width = width;
-}
-
-View.prototype.setHeight = function(height) {
     this.height = height;
 }

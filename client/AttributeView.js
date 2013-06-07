@@ -34,6 +34,6 @@ function AttributeView() {
 AttributeView.prototype = Object.create(View.prototype);
 AttributeView.prototype.constructor = AttributeView;
 
-AttributeView.prototype.setHeight = function(height) {
-    View.prototype.setHeight.call(this, height);
+AttributeView.prototype.setSize = function(width, height) {
+    View.prototype.setSize.call(this, width, height);
 }

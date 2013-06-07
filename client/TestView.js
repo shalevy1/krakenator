@@ -10,13 +10,8 @@ function TestView(width, height, name) {
 TestView.prototype = Object.create(View.prototype);
 TestView.prototype.constructor = TestView;
 
-TestView.prototype.setWidth = function(width) {
-    View.prototype.setWidth.call(this, width);
-    this.updateSizeText();
-}
-
-TestView.prototype.setHeight = function(height) {
-    View.prototype.setHeight.call(this, height);
+TestView.prototype.setSize = function(width, height) {
+    View.prototype.setSize.call(this, width, height);
     this.updateSizeText();
 }
 
