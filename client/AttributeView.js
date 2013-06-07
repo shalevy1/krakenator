@@ -1,6 +1,7 @@
 function AttributeView() {
     View.call(this, 300, -1);
     this.div.addClass("attribute-view");
+    $('<h2 style="text-align: center">Attributes</h2>').appendTo(this.div);
     this.blah = mkdiv("blah", "", this.div);
     this.blah.css("background-color", "gray");
     this.blah.css("position", "absolute");
