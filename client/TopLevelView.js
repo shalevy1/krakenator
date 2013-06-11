@@ -35,20 +35,9 @@ function TopLevelView(container) {
 
     var that = this;
 
-    top.css("top", "0");
-    top.css("left", "0");
-    top.css("right", "0");
     top.resizable({ handles: "s" , resize: function(event, ui) { that.resizeTop(event, ui); } });
-
-    left.css("left", "0");
-    left.css("bottom", "0");
     left.resizable({ handles: "e" , resize: function(event, ui) { that.resizeLeft(event, ui); } });
-
-    right.css("right", "0");
     right.resizable({ handles: "w" , resize: function(event, ui) { that.resizeRight(event, ui); } });
-
-    bottom.css("right", "0");
-    bottom.css("bottom", "0");
     bottom.resizable({ handles: "n" , resize: function(event, ui) { that.resizeBottom(event, ui); } });
 
     this.doResize();
@@ -74,23 +63,22 @@ TopLevelView.prototype.doResize = function() {
     this.width  = this.div.width();
     this.height = this.div.height();
 
-    this.subDivs[this.ViewID.LEFT].css('right', this.leftWidth);
-    this.subDivs[this.ViewID.RIGHT].css('left', this.width - this.rightWidth);
-    this.subDivs[this.ViewID.TOP].css('bottom', this.height - this.topHeight);
-    this.subDivs[this.ViewID.BOTTOM].css('top', this.height - this.bottomHeight);
-
-    this.subDivs[this.ViewID.TOP].css("height", this.topHeight - 1);
-    this.subDivs[this.ViewID.LEFT].css("top", this.topHeight);
-    this.subDivs[this.ViewID.LEFT].css("width", this.leftWidth - 1);
-    this.subDivs[this.ViewID.RIGHT].css("top", this.topHeight);
-    this.subDivs[this.ViewID.RIGHT].css("width", this.rightWidth - 1);
-    this.subDivs[this.ViewID.RIGHT].css("bottom", this.bottomHeight);
     this.subDivs[this.ViewID.BOTTOM].css("height", this.bottomHeight - 1);
     this.subDivs[this.ViewID.BOTTOM].css("left", this.leftWidth);
-    this.subDivs[this.ViewID.CENTER].css("top", this.topHeight);
+    this.subDivs[this.ViewID.BOTTOM].css('top', this.height - this.bottomHeight);
+    this.subDivs[this.ViewID.CENTER].css("bottom", this.bottomHeight);
     this.subDivs[this.ViewID.CENTER].css("left", this.leftWidth);
     this.subDivs[this.ViewID.CENTER].css("right", this.rightWidth);
-    this.subDivs[this.ViewID.CENTER].css("bottom", this.bottomHeight);
+    this.subDivs[this.ViewID.CENTER].css("top", this.topHeight);
+    this.subDivs[this.ViewID.LEFT].css('right', this.leftWidth);
+    this.subDivs[this.ViewID.LEFT].css("top", this.topHeight);
+    this.subDivs[this.ViewID.LEFT].css("width", this.leftWidth - 1);
+    this.subDivs[this.ViewID.RIGHT].css("bottom", this.bottomHeight);
+    this.subDivs[this.ViewID.RIGHT].css('left', this.width - this.rightWidth);
+    this.subDivs[this.ViewID.RIGHT].css("top", this.topHeight);
+    this.subDivs[this.ViewID.RIGHT].css("width", this.rightWidth - 1);
+    this.subDivs[this.ViewID.TOP].css('bottom', this.height - this.topHeight);
+    this.subDivs[this.ViewID.TOP].css("height", this.topHeight - 1);
 
     if (this.subViews[this.ViewID.TOP] != null) {
         this.subViews[this.ViewID.TOP].setSize(this.width, this.topHeight);
