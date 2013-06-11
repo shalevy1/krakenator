@@ -33,6 +33,8 @@ function TopLevelView(container) {
     this.leftWidth    = 200;
     this.rightWidth   = 200;
 
+    var that = this;
+
     top.css("border-style", "none none solid none");
     top.css("border-color", "black");
     top.css("border-width", "1px");
@@ -46,7 +48,6 @@ function TopLevelView(container) {
     left.css("border-width", "1px");
     left.css("left", "0");
     left.css("bottom", "0");
-    var that = this;
     left.resizable({ handles: "e" , resize: function(event, ui) { that.resizeLeft(event, ui); } });
 
     right.css("border-style", "none none none solid");
