@@ -29,16 +29,40 @@ div.view {
     background-color: gray;
 }
 
+.tlv-left {
+    border-style: none solid none none;
+    border-color: black;
+    border-width: 1px;
+}
+
 .tlv-left .ui-resizable-e {
     width: 15px;
+}
+
+.tlv-top {
+    border-style: none none solid none;
+    border-color: black;
+    border-width: 1px;
 }
 
 .tlv-top .ui-resizable-s {
     height: 15px;
 }
 
+.tlv-bottom {
+    border-style: solid none none none;
+    border-color: black;
+    border-width: 1px;
+}
+
 .tlv-bottom .ui-resizable-n {
     height: 15px;
+}
+
+.tlv-right {
+    border-style: none none none solid;
+    border-color: black;
+    border-width: 1px;
 }
 
 .tlv-right .ui-resizable-w {

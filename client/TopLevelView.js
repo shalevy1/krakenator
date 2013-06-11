@@ -35,30 +35,18 @@ function TopLevelView(container) {
 
     var that = this;
 
-    top.css("border-style", "none none solid none");
-    top.css("border-color", "black");
-    top.css("border-width", "1px");
     top.css("top", "0");
     top.css("left", "0");
     top.css("right", "0");
     top.resizable({ handles: "s" , resize: function(event, ui) { that.resizeTop(event, ui); } });
 
-    left.css("border-style", "none solid none none");
-    left.css("border-color", "black");
-    left.css("border-width", "1px");
     left.css("left", "0");
     left.css("bottom", "0");
     left.resizable({ handles: "e" , resize: function(event, ui) { that.resizeLeft(event, ui); } });
 
-    right.css("border-style", "none none none solid");
-    right.css("border-color", "black");
-    right.css("border-width", "1px");
     right.css("right", "0");
     right.resizable({ handles: "w" , resize: function(event, ui) { that.resizeRight(event, ui); } });
 
-    bottom.css("border-style", "solid none none none");
-    bottom.css("border-color", "black");
-    bottom.css("border-width", "1px");
     bottom.css("right", "0");
     bottom.css("bottom", "0");
     bottom.resizable({ handles: "n" , resize: function(event, ui) { that.resizeBottom(event, ui); } });
