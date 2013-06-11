@@ -16,11 +16,11 @@ function TopLevelView(container) {
     this.subViews = [];
     this.subDivs  = [];
 
-    var top    = mkdiv("top", "view", this.div);
-    var right  = mkdiv("right", "view", this.div);
-    var bottom = mkdiv("bottom", "view", this.div);
-    var left   = mkdiv("left", "view", this.div);
-    var center = mkdiv("center", "view", this.div);
+    var center = mkdiv("center", "view tlv-center", this.div);
+    var top    = mkdiv("top", "view tlv-top", this.div);
+    var right  = mkdiv("right", "view tlv-right", this.div);
+    var bottom = mkdiv("bottom", "view tlv-bottom", this.div);
+    var left   = mkdiv("left", "view tlv-left", this.div);
 
     this.subDivs[this.ViewID.TOP]    = top;
     this.subDivs[this.ViewID.RIGHT]  = right;

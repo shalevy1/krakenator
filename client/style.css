@@ -28,3 +28,19 @@ div.view {
 .component-view {
     background-color: gray;
 }
+
+.tlv-left .ui-resizable-e {
+    width: 15px;
+}
+
+.tlv-top .ui-resizable-s {
+    height: 15px;
+}
+
+.tlv-bottom .ui-resizable-n {
+    height: 15px;
+}
+
+.tlv-right .ui-resizable-w {
+    width: 15px;
+}
